@@ -1,0 +1,27 @@
+<main>
+    <section style="text-align: center;">
+        <span>Login</span>
+    </section>
+    <button matButton="elevated" (click)="register()">Register</button>
+    <form [formGroup]="form">
+        <section class="main-form">
+            <mat-form-field style="width: 70%;">
+                <mat-label>Username</mat-label>
+
+                <input formControlName="username" matInput />
+
+        
+            </mat-form-field>
+            <mat-form-field style="width: 70%;">
+                <mat-label>Password</mat-label>
+
+                <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'" />
+
+                <button matIconButton matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'" style="margin-right: 10px;"
+                    [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </section>
+    </form>
+</main>
