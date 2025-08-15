@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './guards/auth/auth.guard';
 
 export const routes: Routes = [
     {
@@ -6,12 +7,13 @@ export const routes: Routes = [
         loadComponent: () => import("./auth/auth.component").then(m => m.AuthComponent)
     },
     {
-        path: "",
-        redirectTo: "auth",
-        pathMatch: "full"
+        path: 'diary',
+        loadComponent: () => import("../app/diary/diary.component").then(m => m.DiaryComponent),
+        canActivate: [authGuard]
     },
     {
-        path: 'diary',
-        loadComponent: () => import("../app/diary/diary.component").then(m => m.DiaryComponent)
-    }
+        path: "",
+        redirectTo: "diary",
+        pathMatch: "full"
+    },
 ];

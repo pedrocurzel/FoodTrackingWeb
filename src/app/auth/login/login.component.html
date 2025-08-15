@@ -1,27 +1,37 @@
 <main>
-    <section style="text-align: center;">
+    <section
+        style="display: flex; width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
         <span>Login</span>
+        <button (click)="changeTab()" mat-button>
+            <span>Register</span>
+            <mat-icon fontIcon="app_registration"></mat-icon>
+        </button>
     </section>
-    <button matButton="elevated" (click)="register()">Register</button>
+
     <form [formGroup]="form">
         <section class="main-form">
-            <mat-form-field style="width: 70%;">
-                <mat-label>Username</mat-label>
 
-                <input formControlName="username" matInput />
-
-        
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput />
             </mat-form-field>
-            <mat-form-field style="width: 70%;">
-                <mat-label>Password</mat-label>
 
-                <input formControlName="password" matInput [type]="hide() ? 'password' : 'text'" />
-
-                <button matIconButton matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'" style="margin-right: 10px;"
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
+                <button mat-icon-button matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'"
                     [attr.aria-pressed]="hide()">
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
+            <button class="login-register-button" mat-raised-button [disabled]="form.invalid || loading()" (click)="login()">
+                <p>Login</p>
+                @if (!loading()) {
+                    <mat-icon fontIcon="login"></mat-icon>
+                } @else {
+                    <mat-icon class="animate-icon" fontIcon="autorenew"></mat-icon>
+                }
+            </button>
         </section>
     </form>
 </main>

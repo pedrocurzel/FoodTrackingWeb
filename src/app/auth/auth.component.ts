@@ -4,10 +4,11 @@ import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     selector: 'app-auth',
-    imports: [MatTabsModule, MatToolbarModule, LoginComponent, RegisterComponent],
+    imports: [MatTabsModule, MatToolbarModule, LoginComponent, RegisterComponent, MatButtonModule],
     templateUrl: './auth.component.html',
     styleUrl: './auth.component.scss'
 })
@@ -18,8 +19,7 @@ export class AuthComponent {
 
     currentIndex = 0;
 
-    registerEmitted() {
-        this.currentIndex = 1;
+    changeTab(tab: number) {
+        this.currentIndex = tab;
     }
-
 }

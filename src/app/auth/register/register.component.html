@@ -1,1 +1,62 @@
-<p>register works!</p>
+<main>
+
+    <section
+        style="display: flex; width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
+        <span>Register</span>
+        <button (click)="changeTab()" mat-button>
+            <span>Login</span>
+            <mat-icon fontIcon="login"></mat-icon>
+        </button>
+    </section>
+
+    <form [formGroup]="form">
+        <section class="main-form">
+             <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input formControlName="username" matInput />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input formControlName="email" matInput />
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" autocomplete="new-password" />
+                <button mat-icon-button matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Confirm your password</mat-label>
+
+                <input matInput [type]="hide() ? 'password' : 'text'" formControlName="confirmPassword" autocomplete="new-password" />
+
+                <button mat-icon-button matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide()">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            @if (form.errors) {
+                @if (form.errors["mismatch"]) {
+                    <div style="width: 70%; font-size: 14px; padding: 0; margin: 0;">
+                        <p style="padding: 0; margin: 0 0 15px 0;">Passwords don't match!</p>
+                    </div>
+                }
+            }
+
+            <button class="login-register-button" mat-raised-button [disabled]="form.invalid || loading()" (click)="register()">
+                <p>Register</p>
+                @if (!loading()) {
+                    <mat-icon fontIcon="login"></mat-icon>
+                } @else {
+                    <mat-icon class="animate-icon" fontIcon="autorenew"></mat-icon>
+                }
+            </button>
+        </section>
+    </form>
+</main>
