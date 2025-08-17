@@ -1,1 +1,18 @@
-<p>diary works!</p>
+<header>
+    <mat-toolbar style="display: flex; flex-direction: row; justify-content: space-between;">
+        <span>Diary</span>
+        <span>
+            @if (diary) {
+                {{ diary.date | date }}
+            }
+        </span>
+        <div>
+            <button mat-icon-button (click)="previousDiary()" >
+                <mat-icon>arrow_back</mat-icon>
+            </button>
+           <button mat-icon-button (click)="nextDiary()">
+                    <mat-icon>arrow_forward</mat-icon>
+                </button>
+        </div>
+    </mat-toolbar>
+</header>

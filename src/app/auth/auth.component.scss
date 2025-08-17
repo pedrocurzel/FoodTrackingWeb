@@ -1,4 +1,57 @@
+$dark-bg: rgb(48, 48, 65);
+$light-bg: rgb(168, 168, 168);
+
+$responsiveness-start: 800px;
+
 .container {
-    padding: 0px 100px;
+    height: 100vh;
+    position: relative;
+    transition: all .6s;
+
+    main {
+        width: 50%;
+        left: 50%;
+        top: 40%;
+        position: absolute;
+        transform: translate(-50%, -40%);
+        transition: all .6s;
+        padding: 30px;
+        border-radius: 10px;
+    }
 }
 
+@media (max-width: $responsiveness-start) {
+    .container {
+        position: relative !important;
+        padding: 0px 30px !important;
+    }
+    main {
+        position: relative !important;
+        width: 100% !important;
+    }
+}
+
+@media (prefers-color-scheme: dark) and (max-width: $responsiveness-start) {
+    .container {
+        background-color: $dark-bg;
+    }
+}
+
+@media (prefers-color-scheme: light) and (max-width: $responsiveness-start) {
+    .container {
+       background-color: $light-bg;
+    }
+}
+
+
+@media (prefers-color-scheme: dark) {
+    main {
+        background-color: $dark-bg;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    main {
+        background-color: $light-bg;
+    }
+}

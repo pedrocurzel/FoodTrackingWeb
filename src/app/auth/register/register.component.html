@@ -2,6 +2,7 @@
 
     <section
         style="display: flex; width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
+        <span>Food Tracking</span>
         <span>Register</span>
         <button (click)="changeTab()" mat-button>
             <span>Login</span>
@@ -11,14 +12,17 @@
 
     <form [formGroup]="form">
         <section class="main-form">
-             <mat-form-field>
+            <mat-form-field>
                 <mat-label>Username</mat-label>
                 <input formControlName="username" matInput />
+                
+                <mat-icon matPrefix>account_circle</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input formControlName="email" matInput />
+                <mat-icon matPrefix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
@@ -28,6 +32,7 @@
                     [attr.aria-pressed]="hide()">
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <mat-icon matPrefix>lock</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
@@ -39,6 +44,7 @@
                     [attr.aria-pressed]="hide()">
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
+                <mat-icon matPrefix>lock</mat-icon>
             </mat-form-field>
 
             @if (form.errors) {

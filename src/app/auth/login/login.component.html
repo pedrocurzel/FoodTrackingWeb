@@ -1,6 +1,7 @@
 <main>
     <section
         style="display: flex; width: 100%; flex-direction: row; align-items: center; justify-content: space-between;">
+        <span>Food Tracking</span>
         <span>Login</span>
         <button (click)="changeTab()" mat-button>
             <span>Register</span>
@@ -11,12 +12,16 @@
     <form [formGroup]="form">
         <section class="main-form">
 
+
             <mat-form-field>
                 <mat-label>Email</mat-label>
                 <input formControlName="email" matInput />
+
+                <mat-icon matPrefix>email</mat-icon>
             </mat-form-field>
 
             <mat-form-field>
+                <mat-icon matPrefix fontIcon="lock"></mat-icon>
                 <mat-label>Enter your password</mat-label>
                 <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
                 <button mat-icon-button matSuffix (click)="passwordClick($event)" [attr.aria-label]="'Hide password'"
@@ -24,12 +29,13 @@
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
             </mat-form-field>
-            <button class="login-register-button" mat-raised-button [disabled]="form.invalid || loading()" (click)="login()">
+            <button class="login-register-button" mat-raised-button [disabled]="form.invalid || loading()"
+                (click)="login()">
                 <p>Login</p>
                 @if (!loading()) {
-                    <mat-icon fontIcon="login"></mat-icon>
+                <mat-icon fontIcon="login"></mat-icon>
                 } @else {
-                    <mat-icon class="animate-icon" fontIcon="autorenew"></mat-icon>
+                <mat-icon class="animate-icon" fontIcon="autorenew"></mat-icon>
                 }
             </button>
         </section>

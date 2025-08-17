@@ -54,7 +54,7 @@ export class LoginComponent {
                     return EMPTY;
                 }),
                 catchError(x => {
-                    this.showErrorMessage(x);
+                    this.showErrorMessage(x.error.message);
                     return EMPTY;
                 }),
                 finalize(() => {

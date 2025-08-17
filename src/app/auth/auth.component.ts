@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild, viewChild } from '@angular/core';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabChangeEvent, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -12,12 +12,16 @@ import { MatButtonModule } from '@angular/material/button';
     templateUrl: './auth.component.html',
     styleUrl: './auth.component.scss'
 })
-export class AuthComponent {
+export class AuthComponent  {
     @ViewChild('matTab') matTab?: MatTabGroup;
 
     title = "Authentication";
 
     currentIndex = 0;
+
+    constructor() {
+        document.title = this.title;
+    }
 
     changeTab(tab: number) {
         this.currentIndex = tab;
